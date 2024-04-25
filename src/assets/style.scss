@@ -1,0 +1,12 @@
+@import 'styles/colors';
+@import 'styles/ele';
+
+body {
+  background: $main-color;
+  color: $sub-color;
+  font-size:12px;
+}
+
+div {
+  color: red;
+}

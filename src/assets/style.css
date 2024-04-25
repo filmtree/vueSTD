@@ -1,0 +1,14 @@
+div {
+  background: #ccc;
+  color: #ddd;
+}
+
+body {
+  background: #ccc;
+  color: #ddd;
+  font-size: 12px;
+}
+
+div {
+  color: red;
+}
