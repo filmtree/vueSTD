@@ -1,22 +1,15 @@
 <template>
   <div id="app">
     <ul class="wrap">
+      <!--마우스가 메뉴에서  벗어났을 때 서브메뉴를 숨깁니다 -->
       <li
         v-for="(menu, index) in menus"
         :key="index"
         @mouseenter="show = index"
         @mouseleave="show = null"
-        <!--
-        마우스가
-        메뉴에서
-        벗어났을
-        때
-        서브메뉴를
-        숨깁니다
-        --
+        @click="setActive(index)"
+        :class="['list', show === index ? 'active' : '']"
       >
-        @click="setActive(index)" :class="['list', show === index ? 'active' :
-        '']" >
         <div>{{ menu.title }}</div>
 
         <transition @enter="enterSlideDown" @leave="leaveSlideDown">
@@ -88,10 +81,14 @@ const barWidth = ref(0);
 
 function updateBar(index) {
   if (index === null) return; // index가 null일 경우 함수를 종료합니다.
-  const list = document.querySelectorAll(".list")[index];
-  barLeft.value = list.offsetLeft;
-  barWidth.value = list.offsetWidth;
+  const lists = document.querySelectorAll(".list")[index];
+  if (lists.length > index) { // 요소가 존재하는지 확인합니다.
+    const list = lists[index];
+    barLeft.value = list.offsetLeft;
+    barWidth.value = list.offsetWidth;
+  }
 }
+
 
 function setActive(index) {
   show.value = index;
