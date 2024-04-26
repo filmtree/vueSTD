@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <header>
-      <Header />
+      <MainHeader />
     </header>
 
     <main>
@@ -9,14 +9,14 @@
     </main>
 
     <footer>
-      <Footer>
+      <MainFooter>
         <template #footer>Footer</template>
-      </Footer>
+      </MainFooter>
     </footer>
   </div>
 </template>
 
 <script setup>
-import Header from './Header.vue'
-import Footer from './Footer.vue'
+import MainHeader from './mainHeader.vue'
+import MainFooter from './mainFooter.vue'
 </script>

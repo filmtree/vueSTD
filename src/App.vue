@@ -7,5 +7,5 @@
 </template>
 
 <script setup>
-import Main from './layout/Main.vue'
+import Main from './layout/layoutMain.vue'
 </script>
