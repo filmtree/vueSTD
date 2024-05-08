@@ -7,6 +7,7 @@ import Modal from "./11vueTelerikModal";
 import { ref } from "vue";
 
 const showModal = ref(false);
+const modalWidth = ref("");
 </script>
 
 <template>
@@ -15,10 +16,12 @@ const showModal = ref(false);
   <!-- body 태그로 이동하도록 지시 -->
   <Teleport to="body">
     <!-- use the modal component, pass in the prop -->
-    <modal :show="showModal" @close="showModal = false">
+    <modal :show="showModal" :width="modalWidth" @close="showModal = false">
       <template #header>
         <h3>custom header</h3>
       </template>
+      <template #body> </template>
+      <template #footer> </template>
     </modal>
   </Teleport>
 </template>

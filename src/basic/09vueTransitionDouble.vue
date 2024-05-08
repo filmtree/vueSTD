@@ -12,7 +12,7 @@ const show = ref(true);
     <div v-if="show" class="outer">
       <div class="inner">  
         중첩 트랜지션을 사용하면 모든 내부 엘리먼트의 트랜지션이 완료될 때까지 원하는 동작이 대기해야 합니다.
-        이러한 경우 <transition> 컴포넌트의 duration prop을 사용하여 명시적 트랜지션 지속 시간(밀리초 단위)을 지정할 수 있습니다. 
+        이러한 경우 &lt;transition&gt; 컴포넌트의 duration prop을 사용하여 명시적 트랜지션 지속 시간(밀리초 단위)을 지정할 수 있습니다. 
         총 지속 시간은 딜레이에 내부 엘리먼트의 트랜지션 지속 시간을 더한 값과 일치해야 합니다: 
       </div>
     </div>
