@@ -5,12 +5,19 @@
     </li>
   </ul>
   <nav>
+    <!-- <Routerlink to="..."></Routerlink> .파스칼 케이스로 사용시-->
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/button">Buttons</router-link> |
     <router-link to="/cselect">CSelect</router-link> |
     <router-link to="/dycomp">dyComp</router-link> |
-    <router-link to="/elTree">ElTree</router-link> |
+    <!-- class 바꿀 경우 -->
+    <router-link
+      to="/elTree"
+      activeClass="border-indigo-500"
+      exactActiveClass="border-indigo-700"
+      >ElTree</router-link
+    >
   </nav>
 </template>
 
