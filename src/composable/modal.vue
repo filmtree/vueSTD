@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { useModal } from "./useModal.js";
+import { useModal } from "./useModal.ts";
 
 const { isModalOpen, openModal, closeModal } = useModal();
 </script>

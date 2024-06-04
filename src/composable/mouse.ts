@@ -1,4 +1,4 @@
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, Ref} from 'vue'
 
 // 관례상, 컴포저블 함수 이름은 "use"로 시작합니다.
 export function useMouse():{ x:Ref<number>, y:Ref<number>} {

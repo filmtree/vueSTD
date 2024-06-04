@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vuepic/vue-datepicker": "^3.3.0",
+    "@vueuse/core": "^10.9.0",
     "click-outside-vue3": "^4.0.1",
     "core-js": "^3.8.3",
     "element-plus": "^2.2.9",
