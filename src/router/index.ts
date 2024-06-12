@@ -23,7 +23,7 @@ const routes = [
   {
     path: "/button",
     name: "Button",
-    component: Button,
+    component: {default:Button, sidebar: HomeView} // name router-view
   },
   {
     path: "/cselect",
@@ -53,8 +53,10 @@ const routes = [
   },
   { 
     path: '*', // 모든 존재하지 않는 경로에 대해 매칭
-    redirect: '/404' 
-  } 
+    redirect: '/404',
+    alias: '/NotFound'
+  }
+  
 ];
 
 const router = createRouter({
