@@ -11,6 +11,7 @@
     <router-link to="/button" activeClass="active">Buttons</router-link> |
     <router-link to="/cselect" activeClass="active">CSelect</router-link> |
     <router-link to="/dycomp" activeClass="active" exactActiveClass="exact-active">dyComp</router-link> |
+    <router-link to="/draglist">DragList</router-link> |
     <!-- class 바꿀 경우 -->
     <router-link
       to="/elTree"
