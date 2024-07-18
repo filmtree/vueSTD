@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import Button from "../views/Buttons.vue";
-import CSelect from "../views/SelectMake.vue";
-import Dycomp from "../views/dynamicComp.vue";
+import Cselect from "../views/SelectMake.vue";
+import Dycomp from "../views/DynamicComp.vue";
 import ElTree from "../views/elementTree.vue";
 import NotFound from "../views/NotFound.vue";
+import Dragable from "../views/DragAble.vue"
 
 const routes = [
   {
@@ -23,12 +24,12 @@ const routes = [
   {
     path: "/button",
     name: "Button",
-    component: Button,
+    component: {default:Button, sidebar: HomeView} // name router-view
   },
   {
     path: "/cselect",
-    name: "CSelect",
-    component: CSelect,
+    name: "Cselect",
+    component: Cselect,
   },
   {
     path: "/dycomp",
@@ -46,15 +47,22 @@ const routes = [
     name: "ElTree",
     component: ElTree,
   },
+  {
+    path: "/draglist",
+    name: "draglist",
+    component: Dragable,
+  },
   { 
     path: "/:pathMatch(.*)*", // 모든 존재하지 않는 경로에 대해 매칭
     name: "NotFound", 
     component: NotFound 
   },
-  { 
-    path: '*', // 모든 존재하지 않는 경로에 대해 매칭
-    redirect: '/404' 
-  } 
+  // { 
+  //   path: '*', // 모든 존재하지 않는 경로에 대해 매칭
+  //   redirect: '/404',
+  //   alias: '/NotFound'
+  // }
+  
 ];
 
 const router = createRouter({
