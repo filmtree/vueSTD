@@ -6,6 +6,7 @@ import Dycomp from "../views/DynamicComp.vue";
 import ElTree from "../views/elementTree.vue";
 import NotFound from "../views/NotFound.vue";
 import Dragable from "../views/DragAble.vue"
+import TooltipMessage from "../views/TooltipMessage.vue";
 
 const routes = [
   {
@@ -51,6 +52,11 @@ const routes = [
     path: "/draglist",
     name: "draglist",
     component: Dragable,
+  },
+  {
+    path: "/tooltip",
+    name: "Tooltip",
+    component: TooltipMessage,
   },
   { 
     path: "/:pathMatch(.*)*", // 모든 존재하지 않는 경로에 대해 매칭

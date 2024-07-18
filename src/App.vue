@@ -9,4 +9,6 @@
 
 <script setup>
 import Main from './layout/layoutMain.vue'
+import 'floating-vue/dist/style.css'
+
 </script>
