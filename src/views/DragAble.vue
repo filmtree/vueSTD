@@ -6,8 +6,6 @@
 
     <div>
       <draggable
-          v-for="element in list"
-          :key="element.order"
           v-model="list"
           :list="list"
           v-bind="dragOptions"
@@ -97,7 +95,7 @@ export default {
   transition: transform 0s;
 }
 
-.ghost {
+.sortable-chosen.ghost {
   opacity: 1;
   background: #c8ebfb;
 }
@@ -114,13 +112,19 @@ export default {
   cursor: pointer;
 }
 
-.sortable-chosen, .sortable-drag {
+.sortable-chosen { /* 마우스 따라다니는 고스트 리시트 감추기 */
+  opacity: 0;
   cursor: grabbing !important;
 }
 
-.sortable-chosen *, .sortable-drag * {
+.sortable-drag {
+  opacity: 1;
   cursor: grabbing !important;
 }
 
+.sortable-chosen *, 
+.sortable-drag * {
+  cursor: grabbing !important;
+}
 
 </style>
