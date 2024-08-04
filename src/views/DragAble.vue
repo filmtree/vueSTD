@@ -12,7 +12,6 @@
           @start="onDragStart"
           @end="onDragEnd"
           item-key="order"
-          drag-class="dragging"
         >
           <template #item="{ element }">
             <li class="list-group-item">
@@ -46,15 +45,26 @@ const message = [
 export default {
   name: "transition-example-2",
   display: "Transitions",
-  order: 7,
+  order: null,
   components: {
     draggable
   },
   data() {
     return {
       list: message.map((name, index) => {
-        return { name, order: index + 1, fixed: false };
+        return { 
+          name, 
+          order: index + 1, 
+          fixed: false 
+        };
       }),
+      dragOptions: {
+        animation: 200,
+        group: "description",
+        disabled: false,
+        ghostClass: "ghost",
+        dragClass: "dragging"
+      },
       drag: false
     };
   },
@@ -70,14 +80,15 @@ export default {
     }
   },
   computed: {
-    dragOptions() {
-      return {
-        animation: 200,
-        group: "description",
-        disabled: false,
-        ghostClass: "ghost"
-      };
-    }
+    // dragOptions() {
+    //   return {
+    //     animation: 0,
+    //     group: "description",
+    //     disabled: false,
+    //     ghostClass: "ghost",
+    //     dragClass: "dragging"
+    //   };
+    // }
   },
 };
 </script>
