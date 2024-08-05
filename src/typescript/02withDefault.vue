@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { defineProps, withDefaults } from 'vue'
+
 export interface Props {
   msg?: string
   labels?: string[]

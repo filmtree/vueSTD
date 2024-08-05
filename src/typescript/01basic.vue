@@ -1,10 +1,12 @@
 <script setup lang="ts">
-  // 올바른 런타임 코드를 생성하려면 defineProps() 의 제너릭 전달인자가 다음 중 하나여야 합니다.
-  // defineProps<{ /*... */ }>() 
-  
-  // interface Props {/* ... */}
-  // defineProps<Props>()
-  
+import { defineProps } from 'vue'
+
+// 올바른 런타임 코드를 생성하려면 defineProps() 의 제너릭 전달인자가 다음 중 하나여야 합니다.
+// defineProps<{ /*... */ }>()
+
+// interface Props {/* ... */}
+// defineProps<Props>()
+
 interface Props {
   foo: string
   bar?: number

@@ -6,7 +6,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+
+import { ref, defineEmits } from 'vue';
+
 
 // 이벤트 정의
 const emit = defineEmits<{
