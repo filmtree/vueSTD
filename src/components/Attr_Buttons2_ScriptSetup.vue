@@ -2,21 +2,20 @@
 
 <template>
   <div>
-    <Button color="red" size="small" shape="rounded">Red Small Rounded Button</Button>
-    <Button color="green" size="large" shape="square">Green Large Square Button</Button>
-    <Button color="blue" size="medium" shape="rounded">Blue Medium Rounded Button</Button>
+    <Button color="red" size="small" shape="rounded" width="100px">Red Small Rounded Button</Button>
+    <Button color="green" size="large" shape="square" width="300px">Green Large Square Button</Button>
+    <Button color="blue" size="medium" shape="rounded" width="auto">Blue Medium Rounded Button</Button>
   </div>
 </template>
 
 <script setup>
 import Button from './Button.vue';
-</script> 
+</script>
 
 -->
 
-
 <template>
-  <button :class="buttonClasses">
+  <button :class="buttonClasses" :style="buttonStyle">
     <slot></slot>
   </button>
 </template>
@@ -46,58 +45,77 @@ const props = defineProps({
     validator: value => {
       return ['rounded', 'square'].includes(value)
     }
+  },
+  width: {
+    type: String,
+    default: 'auto' // 기본 width
   }
 })
 
 // 버튼 클래스 결정
-const buttonClasses = [
-  `btn-${props.color}`,
-  `btn-${props.size}`,
-  `btn-${props.shape}`
-]
+const buttonClasses = [props.color, props.size, props.shape]
+
+// 버튼 스타일 결정
+const buttonStyle = {
+  padding: getPadding(props.size),
+  fontSize: getFontSize(props.size),
+  width: props.width // width 추가
+}
+
+// 크기에 따른 패딩 및 폰트 사이즈를 반환하는 함수
+function getPadding(size) {
+  switch (size) {
+    case 'small':
+      return '5px 10px'
+    case 'medium':
+      return '10px 20px'
+    case 'large':
+      return '15px 30px'
+    default:
+      return '10px 20px' // 기본값
+  }
+}
+
+function getFontSize(size) {
+  switch (size) {
+    case 'small':
+      return '14px'
+    case 'medium':
+      return '16px'
+    case 'large':
+      return '18px'
+    default:
+      return '16px' // 기본값
+  }
+}
 </script>
 
 <style scoped>
-.btn-blue {
+.blue {
   background-color: blue;
   color: white;
 }
 
-.btn-red {
+.red {
   background-color: red;
   color: white;
 }
 
-.btn-green {
+.green {
   background-color: green;
   color: white;
 }
 
-.btn-yellow {
+.yellow {
   background-color: yellow;
   color: white;
 }
 
-.btn-small {
-  padding: 5px 10px;
-  font-size: 14px;
-}
-
-.btn-medium {
-  padding: 10px 20px;
-  font-size: 16px;
-}
-
-.btn-large {
-  padding: 15px 30px;
-  font-size: 18px;
-}
-
-.btn-rounded {
+.rounded {
   border-radius: 5px;
 }
 
-.btn-square {
+.square {
   border-radius: 0;
 }
 
