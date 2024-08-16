@@ -13,6 +13,7 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+
 </script>
 
 <template>
@@ -20,3 +21,4 @@ const props = defineProps<Props>()
   {{ props }}
 </template>
 
+v3-set
