@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import MyButton from '@/components/Attr_Buttons_CompositionAPI.vue'
+import MyButton from '@/components/Attr_Buttons_3_Comp_Class.vue'
 
 export default {
   name: 'App',
