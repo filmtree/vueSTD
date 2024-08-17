@@ -1,14 +1,14 @@
 <template>
-<div>
-  <h2>Calculations</h2>
   <div>
-    <input type="text" v-model="num1"/>
-    <span>+</span>
-    <input type="text" v-model="num2"/>
-    <span>=</span>
-    <span>{{result}}</span>
+    <h2>Calculations</h2>
+    <div>
+      <input type="text" v-model="num1" />
+      <span>+</span>
+      <input type="text" v-model="num2" />
+      <span>=</span>
+      <span>{{ result }}</span>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -23,7 +23,9 @@
 //     });
 //     return toRefs(state)
 // }
-import {compFunc, onMounted} from './compFunc.js';
+//export default compFunc;
+
+import { compFunc, onMounted } from './compFunc.js'
 
 export default {
   name: 'compTemp',
@@ -32,12 +34,12 @@ export default {
     onMounted(() => {
       console.log('Component is mounted!')
     })
-    let {num1, num2, result} = compFunc();
+    let { num1, num2, result } = compFunc()
     return {
       num1,
       num2,
       result
     }
-  },
+  }
 }
 </script>

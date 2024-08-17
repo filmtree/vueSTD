@@ -13,6 +13,7 @@ export function useModal() {
   }
 
   function handleOutsideClick(event: MouseEvent) {
+    // event.target instanceof Element 이벤트가 발생한 DOM 요소가 Element 객체인지 확인
     if (event.target instanceof Element && !event.target.closest('.modal')) {
       closeModal()
     }

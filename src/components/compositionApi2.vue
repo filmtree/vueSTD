@@ -1,4 +1,3 @@
-<!-- Composition API 상태값을 setup() 외부에서 함수작성 -->
 <template>
 <div>
   <h2>Calculations</h2>
@@ -12,6 +11,7 @@
 </div>
 </template>
 
+<!-- Composition API 상태값을 setup() 외부에서 함수작성 -->
 <script>
 import {reactive, computed, toRefs} from 'vue';
 
