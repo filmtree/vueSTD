@@ -6,6 +6,7 @@ import Dycomp from "../views/DynamicComp.vue";
 import ElTree from "../views/elementTree.vue";
 import NotFound from "../views/NotFound.vue";
 import Dragable from "../views/DragAble.vue"
+import ButtonProps from "../views/ButtonsProps.vue"
 import TooltipMessage from "../views/TooltipMessage.vue";
 
 const routes = [
@@ -26,6 +27,11 @@ const routes = [
     path: "/button",
     name: "Button",
     component: {default:Button, sidebar: HomeView} // name router-view
+  },
+  {
+    path: "/button2",
+    name: "Button2",
+    component: ButtonProps // name router-view
   },
   {
     path: "/cselect",
