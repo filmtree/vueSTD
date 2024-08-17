@@ -59,7 +59,8 @@ const buttonClasses = [props.color, props.size, props.shape]
 const buttonStyle = {
   padding: getPadding(props.size),
   fontSize: getFontSize(props.size),
-  width: props.width // width 추가
+  maxWidth: getMaxWidth(props.size),
+  width: props.width // 고정 width 추가
 }
 
 // 크기에 따른 패딩 및 폰트 사이즈를 반환하는 함수
@@ -73,6 +74,19 @@ function getPadding(size) {
       return '15px 30px'
     default:
       return '10px 20px' // 기본값
+  }
+}
+
+function getMaxWidth(size) {
+  switch (size) {
+    case 'small':
+      return '60px'
+    case 'medium':
+      return '200px'
+    case 'large':
+      return '300px'
+    default:
+      return '100px' // 기본값
   }
 }
 
