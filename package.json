@@ -16,6 +16,7 @@
     "core-js": "^3.8.3",
     "element-plus": "^2.2.9",
     "floating-vue": "^5.2.2",
+    "pinia": "^2.2.2",
     "vue": "^3.4.26",
     "vue-class-component": "^8.0.0-0",
     "vue-click-outside": "^1.1.0",

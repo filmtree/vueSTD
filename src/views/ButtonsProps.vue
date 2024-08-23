@@ -126,5 +126,5 @@ button {
 </template>
 
 <script setup>
-import Button from '@/components/Attr_Buttons_ScriptSetup.vue'
+import Button from '@/components/Attr_Buttons_3_Setup_Class_Style.vue'
 </script>
