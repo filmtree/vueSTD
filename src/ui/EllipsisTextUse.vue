@@ -24,6 +24,6 @@ export default {
 
 <style scoped>
 .et-2 {
-  width: 200px;
+  width: 400px;
 }
 </style>
