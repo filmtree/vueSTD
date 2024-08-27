@@ -47,5 +47,6 @@ export default {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: var(--line-clamp);
+  font-size: 12px;
 }
 </style>

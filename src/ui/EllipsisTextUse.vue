@@ -1,10 +1,8 @@
 <template>
   <div>
     <EllipsisText :lines="2">
-      <p class="et-2">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
-      </p>
     </EllipsisText>
     <EllipsisText :lines="3">
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
