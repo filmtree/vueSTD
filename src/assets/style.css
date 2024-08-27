@@ -12,3 +12,15 @@ body {
 div {
   color: red;
 }
+
+@font-face {
+  font-family: fontname;
+  src: local(fontname),
+    url(fontname.woff2) format('woff2'),
+    url(fontname.woff) format('woff'),
+    url(fontname.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  /* unicode-range: U+0000-5FFF; */
+}

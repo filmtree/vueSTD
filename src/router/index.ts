@@ -8,6 +8,7 @@ import NotFound from "../views/NotFound.vue";
 import Dragable from "../views/DragAble.vue"
 import ButtonProps from "../views/ButtonsProps.vue"
 import TooltipMessage from "../views/TooltipMessage.vue";
+import EllipsisText from "@/ui/EllipsisTextUse.vue";
 
 const routes = [
   {
@@ -63,6 +64,11 @@ const routes = [
     path: "/tooltip",
     name: "Tooltip",
     component: TooltipMessage,
+  },
+  {
+    path: "/ellipsistext",
+    name: "ellipsistext",
+    component: EllipsisText,
   },
   { 
     path: "/:pathMatch(.*)*", // 모든 존재하지 않는 경로에 대해 매칭
