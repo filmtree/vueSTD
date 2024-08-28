@@ -1,10 +1,8 @@
 <template>
-  <div>
+  <div style="width: 400px">
     <EllipsisText :lines="2">
-      <p class="et-2">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua.
     </EllipsisText>
     <EllipsisText :lines="3">
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -25,7 +23,4 @@ export default {
 </script>
 
 <style scoped>
-.et-2 {
-  width: 400px;
-}
 </style>
