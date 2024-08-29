@@ -10,7 +10,7 @@ export default {
   components: {
     HelloWorld
   },
-  mixins:[],
+  mixins: [],
   props: {
     // 기본 타입 체크 (`null`과 `undefined`는 모든 타입 유효성 검사를 통과합니다.)
     propA: Number,
@@ -30,22 +30,22 @@ export default {
     propE: {
       type: Object,
       // 객체나 배열의 기본 값은 항상 팩토리 함수로부터 반환되어야 합니다.
-      default: function() {
+      default: function () {
         return { message: 'hello' }
       }
     },
     // 커스텀 유효성 검사 함수
     propF: {
-      validator: function(value) {
+      validator: function (value) {
         // 값이 꼭 아래 세 문자열 중 하나와 일치해야 합니다.
-        return ['success', 'warning', 'danger'].indexOf(value) !== -1
+        return ['success', 'warning', 'danger'].includes(value)
       }
     },
     // 기본 값을 갖는 함수
     propG: {
       type: Function,
       // 객체나 배열과 달리 아래 표현은 팩토리 함수가 아닙니다. 기본 값으로 사용되는 함수입니다.
-      default: function() {
+      default: function () {
         return 'Default function'
       }
     }
@@ -56,8 +56,7 @@ export default {
   inject: ['user'],
   setup() {},
   data() {
-    return {
-      }
+    return {}
   },
   computed: {},
   watch: {},
