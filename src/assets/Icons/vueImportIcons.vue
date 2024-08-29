@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { Icon1, Icon2, Icon3 } from './14vueImportIcons.vue';
+import { Icon1, Icon2, Icon3 } from './vueImportIcons.vue';
 
 export default {
   components: {

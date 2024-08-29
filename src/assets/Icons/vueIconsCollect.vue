@@ -1,10 +1,3 @@
-<!-- Icons.vue -->
-<template>
-  <div>
-    <!-- 이 컴포넌트는 렌더링되지 않습니다. 개별 아이콘 컴포넌트를 정의하는 데 사용됩니다. -->
-  </div>
-</template>
-
 <script>
 export const Icon1 = {
   template: `
