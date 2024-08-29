@@ -9,6 +9,7 @@ import Dragable from "../views/DragAble.vue"
 import ButtonProps from "../views/ButtonsProps.vue"
 import TooltipMessage from "../views/TooltipMessage.vue";
 import EllipsisText from "@/ui/EllipsisTextUse.vue";
+import DynamicComponentTab from "@/views/DynamicComponentTab.vue";
 
 const routes = [
   {
@@ -69,6 +70,11 @@ const routes = [
     path: "/ellipsistext",
     name: "ellipsistext",
     component: EllipsisText,
+  },
+  {
+    path: "/dynamiccomponenttab",
+    name: "DynamicComponentTab",
+    component: DynamicComponentTab,
   },
   { 
     path: "/:pathMatch(.*)*", // 모든 존재하지 않는 경로에 대해 매칭

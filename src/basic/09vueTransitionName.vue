@@ -1,7 +1,14 @@
-<Transition name="slide-fade">
-  <p v-if="show">안녕</p>
-</Transition>
+<template>
+  <Transition name="slide-fade">
+    <p v-if="show">안녕</p>
+  </Transition>
+</template>
 
+<script setup>
+import { ref } from 'vue'
+const show = ref(false)
+</script>
+  
 <style>
 /*
   진입/진출 애니메이션은 다른 지속 시간과
