@@ -35,8 +35,22 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const navigateToHome = () => {
-  router.push(6)
+  // 문자열 경로
+  router.push('/users/eduardo')
+
+  // 경로를 가진 객체
+  router.push({ path: '/users/eduardo' })
+
+  // 라우터가 URL을 만들도록 파라미터가 있는 네임드 라우트
+  router.push({ name: 'user', params: { username: 'eduardo' } })
+
+  // 쿼리를 포함한 결과, /register?plan=private
+  router.push({ path: '/register', query: { plan: 'private' } })
+
+  // 해시를 포함한 결과, /about#team
+  router.push({ path: '/about', hash: '#team' })
 }
+
 const replaceWithAbout = () => {
   router.replace('/about')
 }
