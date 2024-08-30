@@ -1,50 +1,68 @@
-<Transition
-  :css="false"
-  @before-enter="onBeforeEnter"
-  @enter="onEnter"
-  @after-enter="onAfterEnter"
-  @enter-cancelled="onEnterCancelled"
-  @before-leave="onBeforeLeave"
-  @leave="onLeave"
-  @after-leave="onAfterLeave"
-  @leave-cancelled="onLeaveCancelled"
->
-  <!-- ... -->
-</Transition>
+<template>
+  <Transition
+    :css="true"
+    @before-enter="onBeforeEnter"
+    @enter="onEnter"
+    @after-enter="onAfterEnter"
+    @enter-cancelled="onEnterCancelled"
+    @before-leave="onBeforeLeave"
+    @leave="onLeave"
+    @after-leave="onAfterLeave"
+    @leave-cancelled="onLeaveCancelled">
+    <div class="container">...</div>
+  </Transition>
+</template>
 
-<script>
-// 엘리먼트가 DOM에 삽입되기 전에 호출됩니다.
-// 이것을 사용하여 엘리먼트의 "enter-from" 상태를 설정합니다.
-function onBeforeEnter(el) {}
+<script setup>
+function onBeforeEnter(el) {
+  el.style.transition = 'height .3s ease'
+  el.style.height = 0
+}
 
-// 엘리먼트가 삽입되고 1 프레임 후 호출됩니다.
-// 진입 애니메이션을 시작하는 데 사용합니다.
+// el.offsetHeight를 호출함으로써 브라우저는 이전 스타일을 적용한 후,
+// 다음 스타일을 적용하기 전에 레이아웃을 다시 계산하게 됩니다.
+// 이렇게 하면 브라우저는 두 상태(높이 0과 실제 높이) 간의 변화를 인식하고,
+// CSS 전환 효과를 적용할 수 있습니다.
+
 function onEnter(el, done) {
-  // CSS와 함께 사용되는 경우, 선택적으로
-  // 트랜지션 종료를 나타내기 위해 done 콜백을 호출합니다.
-  done();
+  el.offsetHeight // trigger reflow
+  el.style.height = el.scrollHeight + 'px'
+  el.addEventListener('transitionend', done)
 }
 
-// 진입 트랜지션이 완료되면 호출됩니다.
-function onAfterEnter(el) {}
-function onEnterCancelled(el) {}
+// function onAfterEnter(el) {}
 
-// 진출 훅 전에 호출됩니다.
-// 대부분의 경우 그냥 진출 훅을 사용해야 합니다.
-function onBeforeLeave(el) {}
+// function onEnterCancelled(el) {}
 
-// 진출 트랜지션이 시작될 때 호출됩니다.
-// 진출 애니메이션을 시작하는 데 사용합니다.
+function onBeforeLeave(el) {
+  el.style.transition = 'height .3s ease'
+  el.style.height = el.scrollHeight + 'px'
+}
+
 function onLeave(el, done) {
-  // CSS와 함께 사용되는 경우, 선택적으로
-  // 트랜지션 종료를 나타내기 위해 done 콜백을 호출합니다.
-  done();
+  el.style.height = 0
+  el.addEventListener('transitionend', done)
 }
 
-// 진출 트랜지션이 완료되고,
-// 엘리먼트가 DOM에서 제거된 후 호출됩니다.
-function onAfterLeave(el) {}
+// function onAfterLeave(el) {}
 
-// v-show 트랜지션에서만 사용 가능합니다.
-function onLeaveCancelled(el) {}
+// function onLeaveCancelled(el) {}
 </script>
+
+<style>
+.container {
+  overflow: hidden; 
+}
+
+/* 
+
+.transition-enter-active, .transition-leave-active {
+  transition: height 0.3s ease-in-out;
+}
+
+.transition-enter, .transition-leave-to {
+  height: 0; 
+} 
+
+*/
+</style>
