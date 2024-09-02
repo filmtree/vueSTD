@@ -1,24 +1,21 @@
 <script setup>
-import { defineProps, defineEmits } from "vue";
+import { defineProps, defineEmits } from 'vue'
 
-defineProps({
+const props = defineProps({
   firstName: String,
-  lastName: String,
-});
+  lastName: String
+})
 
-defineEmits(["update:firstName", "update:lastName"]);
-
+const emit = defineEmits(['update:firstName', 'update:lastName'])
 </script>
 
 <template>
   <input
     type="text"
-    :value="firstName"
-    @input="$emit('update:firstName', $event.target.value)"
-  />
+    :value="props.firstName"
+    @input="emit('update:firstName', $event.target.value)" />
   <input
     type="text"
-    :value="lastName"
-    @input="$emit('update:lastName', $event.target.value)"
-  />
+    :value="props.lastName"
+    @input="emit('update:lastName', $event.target.value)" />
 </template>

@@ -6,18 +6,17 @@
   컴포넌트의 modelModifiers 프로퍼티에 capitalize가 포함되어 있고 
   그 값은 v-model 바인딩 v-model.capitalize="myText"에 
   설정되어 있기 때문에 true인 것을 알 수 있습니다.
- -->
+-->
 
 <script setup>
 import { defineProps, defineEmits } from "vue";
 
-const props = defineProps(
-  {
-    modelValue: String,
-    modelModifiers: { default: () => ({}) }
-  },
-  ['title', 'titleModifiers']
-)
+const props = defineProps({
+  modelValue: String,
+  modelModifiers: { default: () => ({}) },
+  title: String,
+  titleModifiers: { default: () => ({}) }
+})
 
 const emit = defineEmits(['update:modelValue', 'update:title'])
 
@@ -29,6 +28,15 @@ function emitValue(e) {
   emit('update:modelValue', value)
 }
 
+// title에 대한 처리
+function emitTitleValue(e) {
+  let value = e.target.value
+  if (props.titleModifiers.capitalize) {
+    value = value.charAt(0).toUpperCase() + value.slice(1)
+  }
+  emit('update:title', value)
+}
+
 /* 인자와 수정자가 모두 있는 v-model 바인딩 */
 // const props = defineProps(['title', 'titleModifiers'])
 // defineEmits(['update:title'])
@@ -37,5 +45,6 @@ console.log(props.titleModifiers) // { capitalize: true }
 </script>
 
 <template>
-  <input type="text" :value="modelValue" @input="emitValue" />
+  <input type="text" :value="props.modelValue" @input="emitValue" />
+  <input type="text" :value="props.title" @input="emitTitleValue" />
 </template>
