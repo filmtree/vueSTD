@@ -9,30 +9,28 @@
 </template>
 
 <script lang="ts" setup>
-
 // //////// reactive()는 전달인자에서 타입을 암시적으로 추론합니다.
 
-import { reactive } from 'vue';
+import { reactive } from 'vue'
 
-// User 타입 정의
+// 인터페이스 방식. reactive는 제네릭 방식은 사용하지 않음.
 interface User {
-  id: number;
-  name: string;
-  email: string;
+  id: number
+  name: string
+  email: string
 }
 
-// reactive()를 사용하여 반응형 객체 생성
 const user = reactive<User>({
   id: 1,
   name: 'Alice',
-  email: 'alice@example.com',
-});
+  email: 'alice@example.com'
+})
 
 // 사용자 정보를 업데이트하는 함수 정의
 const updateUser = () => {
-  user.name = 'Bob';
-  user.email = 'bob@example.com';
-};
+  user.name = 'Bob'
+  user.email = 'bob@example.com'
+}
 </script>
 
 <style scoped>

@@ -13,5 +13,8 @@ const props = defineProps<{
 </script>
 
 <template>
-  {{ props.title }}
+  {{ props.book.title }}
 </template>
+
+<!-- Component Props 전달 방법 -->
+<MyComponent :book="{ title: 'Hello', year: '2000', author: 'John' }" />
