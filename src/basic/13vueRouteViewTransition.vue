@@ -7,6 +7,8 @@
   </router-view>
 </template>
 
+script
+
 <style>
 .fade-enter-active,
 .fade-leave-active {

@@ -28,7 +28,10 @@ const routes = [
   {
     path: "/button",
     name: "Button",
-    component: {default:Button, sidebar: HomeView} // name router-view
+    component: {
+      default: Button, 
+      sidebar: HomeView
+    } // name router-view
   },
   {
     path: "/button2",
