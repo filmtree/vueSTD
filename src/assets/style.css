@@ -12,3 +12,22 @@ body {
 div {
   color: red;
 }
+
+.wrapper {
+  counter-reset: number 0;
+}
+.inner::before {
+  counter-increment: number 1;
+  /* 제 1 장 */
+  content: '제' counter(number) '장 ';
+}
+
+.wrapper {
+  counter-reset: index;
+  list-style-type: none;
+}
+.inner::before {
+  counter-increment: index;
+  /* 1.1.1 */
+  content: counters(index, '.')  '. ';
+}
