@@ -4,8 +4,7 @@
     :class="classes"
     ref="button"
     v-on="type === 'switch' ? { click: onClick } : {}"
-    v-bind="$attrs"
-  >
+    v-bind="$attrs">
     <slot></slot>
   </button>
 </template>
@@ -14,71 +13,71 @@
 export default {
   props: {
     type: {
-      default: "button",
-      validator: (value) => {
-        const allowed = ["button", "submit", "reset", "switch"];
-        return allowed.includes(value);
-      },
+      default: 'button',
+      validator: value => {
+        const allowed = ['button', 'submit', 'reset', 'switch']
+        return allowed.includes(value)
+      }
     },
     sm: Boolean,
     md: {
       type: Boolean,
-      default: true,
+      default: true
     },
     lg: Boolean,
     pill: Boolean,
     active: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   data() {
     return {
       classes: [],
-      isActive: this.active,
-    };
+      isActive: this.active
+    }
   },
   computed: {
     button() {
-      return this.$refs.button;
-    },
+      return this.$refs.button
+    }
   },
   created() {
-    if (this.sm) this.classes.push("sm");
-    else if (this.lg) this.classes.push("lg");
-    else this.classes.push("md");
+    if (this.sm) this.classes.push('sm')
+    else if (this.lg) this.classes.push('lg')
+    else this.classes.push('md')
 
-    if (this.pill) this.classes.push("pill");
+    if (this.pill) this.classes.push('pill')
 
-    this.changeBrightness();
+    this.changeBrightness()
   },
   mounted() {
-    Object.keys(this.$attrs).forEach((attr) => {
-      if (attr.startsWith("text-")) {
-        this.button.style.color = attr.substring(5);
+    Object.keys(this.$attrs).forEach(attr => {
+      if (attr.startsWith('text-')) {
+        this.button.style.color = attr.substring(5)
       }
-      if (attr.startsWith("background-")) {
-        this.button.style.backgroundColor = attr.substring(11);
+      if (attr.startsWith('background-')) {
+        this.button.style.backgroundColor = attr.substring(11)
       }
-    });
+    })
   },
   methods: {
     changeBrightness() {
-      if (this.type === "switch") {
+      if (this.type === 'switch') {
         if (!this.isActive) {
-          this.classes.push("deactive");
+          this.classes.push('deactive')
         } else {
-          this.classes = this.classes.filter((i) => i !== "deactive");
+          this.classes = this.classes.filter(i => i !== 'deactive')
         }
       }
     },
     onClick() {
-      this.isActive = !this.isActive;
-      this.changeBrightness();
-      this.$emit("update:active", this.isActive);
-    },
-  },
-};
+      this.isActive = !this.isActive
+      this.changeBrightness()
+      this.$emit('update:active', this.isActive)
+    }
+  }
+}
 </script>
   
 <style scoped>
