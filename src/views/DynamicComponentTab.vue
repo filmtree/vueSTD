@@ -24,7 +24,7 @@ export default {
         { name: 'tab1', label: '탭 1', component: Tab1 },
         { name: 'tab2', label: '탭 2', component: Tab2 }
       ],
-      selectedTab: { name: 'tab1', component: Tab1 }
+      selectedTab: this.tabs[0]
     }
   },
   methods: {
