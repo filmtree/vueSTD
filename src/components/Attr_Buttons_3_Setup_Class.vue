@@ -9,7 +9,7 @@
   </button>
 </template>
   
-  <script setup>
+<script setup>
 import {
   ref,
   onMounted,
@@ -70,7 +70,7 @@ onMounted(() => {
 })
 </script>
   
-  <style scoped>
+<style scoped>
 button {
   outline: none;
 }

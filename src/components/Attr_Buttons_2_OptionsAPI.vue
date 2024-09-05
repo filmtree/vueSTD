@@ -13,11 +13,10 @@
 export default {
   props: {
     type: {
+      type: String,
       default: 'button',
-      validator: value => {
-        const allowed = ['button', 'submit', 'reset', 'switch']
-        return allowed.includes(value)
-      }
+      validator: value =>
+        ['button', 'submit', 'reset', 'switch'].includes(value)
     },
     sm: Boolean,
     md: {
@@ -46,9 +45,7 @@ export default {
     if (this.sm) this.classes.push('sm')
     else if (this.lg) this.classes.push('lg')
     else this.classes.push('md')
-
     if (this.pill) this.classes.push('pill')
-
     this.changeBrightness()
   },
   mounted() {
