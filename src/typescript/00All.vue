@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import {
-  ref,
-  reactive,
-  computed,
-  provide,
-  inject,
-} from 'vue'
+import { ref, reactive, computed, provide, inject } from 'vue'
 // 제너릭 타입 전달인자를 통해 순수 타입으로 props를 정의
 
 // 제네릭 인자 < ... >

@@ -1,3 +1,21 @@
+<script setup>
+//=======================================================================================
+//                                                                                       
+//  ##   ##   ####  #####         ####   ####  #####     #####   ##      ##            
+//  ##   ##  ##     ##           ##     ##     ##  ##   ##   ##  ##      ##            
+//  ##   ##   ###   #####         ###   ##     #####    ##   ##  ##      ##            
+//  ##   ##     ##  ##              ##  ##     ##  ##   ##   ##  ##      ##            
+//   #####   ####   #####        ####    ####  ##   ##   #####   ######  ######        
+//                                                                                       
+//=======================================================================================
+
+import { ref } from 'vue'
+import { useScroll } from './useScroll'
+
+const scrollElement = ref(null) // 헤더 요소에 대한 ref
+const { scrollY } = useScroll(scrollElement) // ref를 전달
+</script>
+
 <template>
   <div>
     <header
@@ -11,14 +29,6 @@
     </main>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-import { useScroll } from './useScroll'
-
-const scrollElement = ref(null) // 헤더 요소에 대한 ref
-const { scrollY } = useScroll(scrollElement) // ref를 전달
-</script>
 
 <style>
 .header {

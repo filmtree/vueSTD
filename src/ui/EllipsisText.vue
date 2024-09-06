@@ -3,7 +3,6 @@
     <slot></slot>
   </div>
 </template>
-
 <script setup>
 import { ref, defineProps, onMounted, watch } from 'vue'
 
