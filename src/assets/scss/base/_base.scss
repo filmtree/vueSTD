@@ -1,0 +1,82 @@
+/**
+ * Make all elements inherit from `html` box-sizing
+ */
+* {
+  box-sizing: inherit;
+}
+
+/**
+ * 1. Redefine box-sizing on the root element
+ * 2. Explicitly set a background color to avoid an issue in Edge in dark mode,
+ *    where the browser’s chrome background is set to a dark color
+ */
+html {
+  box-sizing: border-box; /* 1 */
+  background-color: #fff; /* 2 */
+}
+
+/**
+ * Basic typography styles
+ */
+body {
+  color: $dark-grey;
+  font: 1.125em / 1.45 $text-font-stack;
+}
+
+/**
+ * Links
+ * 1. Reset styles from <button>
+ */
+a,
+.link-like {
+  background: 0; /* 1 */
+  border: 0; /* 1 */
+  color: inherit;
+  cursor: pointer;
+  padding: 0; /* 1 */
+  text-decoration: underline;
+  transition: 0.15s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $main-color;
+  }
+}
+
+/**
+ * Inline code
+ * 1. Make the text slightly smaller as the font looks bigger
+ */
+:not(pre) > code {
+  color: $dark-pink;
+  font-family: $code-font-stack;
+  font-size: 0.8em; /* 1 */
+  vertical-align: middle;
+}
+
+/**
+ * Reset fieldset styles to make it invisible
+ */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.no-js .js-powered {
+  display: none;
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
