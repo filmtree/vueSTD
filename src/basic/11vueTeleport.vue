@@ -3,7 +3,7 @@ Modal component with customizable slots and CSS transitions.
 -->
 
 <script setup>
-import Modal from "./11vueTelerikModal";
+import Modal from "./11vueTeleportModal";
 import { ref } from "vue";
 
 const showModal = ref(false);
