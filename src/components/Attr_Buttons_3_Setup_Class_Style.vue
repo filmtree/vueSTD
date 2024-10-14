@@ -21,7 +21,7 @@ import Button from './Button.vue';
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue'
+import { defineProps } from 'vue'
 
 // props 정의
 const props = defineProps({

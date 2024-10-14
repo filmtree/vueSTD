@@ -22,21 +22,20 @@ import {
   watch
 } from 'vue'
 
-//// 정적 유효성 검사
-type ButtonType = 'button' | 'submit' | 'reset' // Type Assertion 방식 (정적 컴파일)
+type ButtonType = 'button' | 'submit' | 'reset'
 
 interface Props {
   type: ButtonType
-  sm?: boolean // optional
-  md: boolean // 기본값 required: true와 같음
-  lg?: boolean // optional
-  pill?: boolean // optional
-  active?: boolean // optional
-  isSwitch?: boolean // optional
+  sm?: boolean
+  md?: boolean // 선택적으로 변경
+  lg?: boolean
+  pill?: boolean
+  active?: boolean
+  isSwitch?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  type: 'button' as ButtonType, // Type Assertion 방식 (정적 컴파일)
+  type: 'button' as ButtonType,
   sm: false,
   md: true,
   lg: false,
@@ -45,21 +44,18 @@ const props = withDefaults(defineProps<Props>(), {
   isSwitch: false
 })
 
-//// 실시간 유효성 검사
-// Validator 함수 정의
-const isValidType = (value: ButtonType) => ['button', 'submit', 'reset'].includes(value)
+// Props 변화 시 유효성 검사
+const isValidType = (value: ButtonType) =>
+  ['button', 'submit', 'reset'].includes(value)
 
-
-// 마운트 시 유효성 검사
 onMounted(() => {
   if (!isValidType(props.type)) {
     console.warn(`Invalid type prop value: ${props.type}`)
   }
 })
 
-// Props 변화 시 유효성 검사. 동적 컴파일
 watch(
-  () => props.type,
+  () => props.type, // 항상 () => props.type처럼 getter 함수를 사용
   newValue => {
     if (!isValidType(newValue)) {
       console.warn(`Invalid type prop value: ${newValue}`)
@@ -68,9 +64,7 @@ watch(
 )
 
 // 'type' prop을 HTML 요소에 바인딩하기 전에 'switch' 값이 아닌지 확인
-const effectiveType = computed(() => {
-  return props.isSwitch ? 'button' : props.type
-})
+const effectiveType = computed(() => (props.isSwitch ? 'button' : props.type))
 
 const classes = computed(() => {
   const result: string[] = []
@@ -83,22 +77,22 @@ const classes = computed(() => {
 })
 
 const button = ref<HTMLElement | null>(null)
-
+const attrs = useAttrs() // useAttrs를 한 번만 호출
 const buttonStyles = computed(() => {
   const styles: Record<string, string> = {}
-  Object.keys(useAttrs()).forEach(attr => {
+  Object.keys(attrs).forEach(attr => {
     if (attr.startsWith('text-')) {
-      styles.color = useAttrs()[attr] as string
+      styles.color = attrs[attr] as string
     }
     if (attr.startsWith('background-')) {
-      styles.backgroundColor = useAttrs()[attr] as string
+      styles.backgroundColor = attrs[attr] as string
     }
   })
   return styles
 })
 
 const emit = defineEmits<{
-  (event: 'update:active', value: boolean): void
+  (event: 'update:active', value: boolean): void // void는 return 문이 없을 때 사용
 }>()
 
 const onClick = () => {
@@ -129,4 +123,3 @@ button {
   filter: brightness(50%);
 }
 </style>
-  

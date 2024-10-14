@@ -57,6 +57,8 @@ const onClick = () => {
 }
 
 const attrs = useAttrs()
+// useAttrs()는 현재 컴포넌트에 전달된 모든 속성을 포함하는 객체를 반환합니다.
+// 이 객체는 부모 컴포넌트에서 전달된 속성뿐만 아니라, HTML 속성도 포함합니다.
 
 onMounted(() => {
   Object.keys(attrs).forEach(attr => {
