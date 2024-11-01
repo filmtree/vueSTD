@@ -7,3 +7,241 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+
+// 폰트
+@mixin font($font-size: 12px, $line-height: 1.5, $font-weight: 400) {
+  font-size: $font-size;
+  line-height: $line-height;
+  font-weight: $font-weight;
+}
+
+// 목적에 따른 폰트 설정
+$font-styles: (
+  heading: (
+    family: 'Arial, sans-serif',
+    size: 24px,
+    weight: 700,
+    line-height: 1.2,
+  ),
+  body: (
+    family: 'Georgia, serif',
+    size: 16px,
+    weight: 400,
+    line-height: 1.5,
+  ),
+  emphasis: (
+    family: 'Verdana, sans-serif',
+    size: 18px,
+    weight: 700,
+    line-height: 1.4,
+    color: #e74c3c,
+  ),
+);
+
+@mixin apply-font-style($style) {
+  $font: map-get($font-styles, $style);
+  
+  font-family: map-get($font, family);
+  font-size: map-get($font, size);
+  font-weight: map-get($font, weight);
+  line-height: map-get($font, line-height);
+  
+  // 색상이 존재하는 경우 적용
+  @if map-has-key($font, color) {
+      color: map-get($font, color);
+  }
+}
+
+//// h1 {
+////  @include apply-font-style(heading);
+//// }
+
+// 반응형 폰트 - 유동 사이즈
+@mixin responsive-font-size($min-size, $max-size, $min-width, $max-width) {
+  font-size: $min-size; // 기본 폰트 사이즈 설정
+
+  // 반응형 폰트 사이즈 적용
+  @media (min-width: $min-width) {
+      font-size: $min-size + ($max-size - $min-size) * ((100vw - $min-width) / ($max-width - $min-width));
+  }
+
+  // 최대 너비 이상일 때 최대 폰트 사이즈 적용
+  @media (min-width: $max-width) {
+      font-size: $max-size;
+  }
+}
+// h1 {
+//   @include responsive-font-size(24px, 36px, 320px, 1280px);
+// }
+
+// 반응형 폰트 - 고정 사이즈
+@mixin responsive-font-size($small-size, $medium-size, $large-size) {
+  font-size: $small-size; // 기본 폰트 사이즈 (모바일)
+
+  @media (min-width: 481px) {
+      font-size: $medium-size; // 태블릿
+  }
+
+  @media (min-width: 769px) {
+      font-size: $large-size; // 데스크탑
+  }
+}
+// h1 {
+//   @include responsive-font-size(20px, 24px, 32px);
+// }
+
+// 말줄임-여러줄 및 한줄
+@mixin ellipsis($lines: 2) {  
+  display: block; // 기본적으로 block으로 설정하여 텍스트가 줄 바꿈될 수 있도록 함
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  // 1줄일 경우의 추가 스타일
+  @if $lines == 1 {
+      white-space: nowrap; // 1줄일 때는 nowrap 추가
+  } @else {
+      display: -webkit-box; // 여러 줄일 경우 -webkit-box로 설정
+      -webkit-line-clamp: $lines; // 줄 수 설정
+      -webkit-box-orient: vertical; // 박스 방향을 수직으로 설정
+  }
+}
+
+// 플렉스
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $gap: 1px) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+
+// 그리드 컬럼
+@mixin grid-column($columns: 1, $gutter: 1px, $repeat: 1fr) {
+  display: grid;
+  grid-template-columns: repeat($columns, $repeat);
+  gap: $gutter;
+}
+
+// 그리드 컬럼 로우
+@mixin grid($rows: 1, $columns: 1, $gutter: 1rem, $row-repeat: 1fr, $col-repeat: 1fr) {
+  display: grid;
+  grid-template-rows: repeat($rows, $row-repeat);
+  grid-template-columns: repeat($columns, $col-repeat);
+  gap: $gutter;
+}
+
+// 스크롤 바
+@mixin scrollbar($width: 12px, $track-color: #f1f1f1, $thumb-color: #888, $thumb-hover-color: #555) {
+  /* WebKit 기반 브라우저 (Chrome, Safari 등) */
+  &::-webkit-scrollbar {
+      width: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+      background: $track-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+      background: $thumb-color;
+      border-radius: 6px; /* 둥글게 만들기 */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+      background: $thumb-hover-color;
+  }
+
+  /* Firefox */
+  scrollbar-width: thin; /* 스크롤바 얇게 설정 */
+  scrollbar-color: $thumb-color $track-color; /* 스크롤바 색상 설정 */
+}
+
+// 애니메이션
+@mixin animation($name, $duration: 1s, $timing: ease, $delay: 0s, $iteration: 1) {
+  animation-name: $name;
+  animation-duration: $duration;
+  animation-timing-function: $timing;
+  animation-delay: $delay;
+  animation-iteration-count: $iteration;
+}
+
+// 반응형 폰트 믹스인
+@mixin responsive-font($min-size, $max-size, $min-width, $max-width) {
+  font-size: #{$min-size + ( ($max-size - $min-size) * ((100vw - $min-width) / ($max-width - $min-width)) )};
+}
+
+// 반응형 패딩 - 동일한 값
+@mixin responsive-padding($min-padding, $max-padding, $min-width, $max-width) {
+  padding: #{$min-padding + ( ($max-padding - $min-padding) * ((100vw - $min-width) / ($max-width - $min-width)) )};
+
+  @media (max-width: $min-width) {
+      padding: $min-padding;
+  }
+
+  @media (min-width: $max-width) {
+      padding: $max-padding;
+  }
+}
+
+// 반응형 패딩 - 4개의 값
+@mixin responsive-padding($min-padding, $max-padding, $min-width, $max-width) {
+  // 패딩 값을 배열로 변환
+  $min-padding: split($min-padding, ' ');
+  $max-padding: split($max-padding, ' ');
+
+  // 패딩 계산
+  padding-top: #{at($min-padding, 1) + ((at($max-padding, 1) - at($min-padding, 1)) * ((100vw - $min-width) / ($max-width - $min-width)))};
+  padding-right: #{at($min-padding, 2) + ((at($max-padding, 2) - at($min-padding, 2)) * ((100vw - $min-width) / ($max-width - $min-width)))};
+  padding-bottom: #{at($min-padding, 3) + ((at($max-padding, 3) - at($min-padding, 3)) * ((100vw - $min-width) / ($max-width - $min-width)))};
+  padding-left: #{at($min-padding, 4) + ((at($max-padding, 4) - at($min-padding, 4)) * ((100vw - $min-width) / ($max-width - $min-width)))};
+
+  // 최대 너비 이하일 때 최소 패딩 적용
+  @media (max-width: $max-width) {
+      padding-top: at($min-padding, 1);
+      padding-right: at($min-padding, 2);
+      padding-bottom: at($min-padding, 3);
+      padding-left: at($min-padding, 4);
+  }
+
+  // 최소 너비 이상일 때 최대 패딩 적용
+  @media (min-width: $min-width) {
+      padding-top: at($max-padding, 1);
+      padding-right: at($max-padding, 2);
+      padding-bottom: at($max-padding, 3);
+      padding-left: at($max-padding, 4);
+  }
+}
+// .container {
+//   @include responsive-padding(10px 20px 30px 40px, 30px 40px 50px 60px, 320px, 1280px);
+// }
+
+
+// 조건부 반응형 패딩
+@mixin conditional-padding($width1, $padding1, $width2, $padding2, $width3, $padding3) {
+  // 기본 패딩을 첫 번째 값으로 설정
+  padding: at($padding1, 1) at($padding1, 2) at($padding1, 3) at($padding1, 4);
+
+  // 너비가 width1 이하일 때
+  @media (min-width: $width1) {
+      padding: at($padding1, 1) at($padding1, 2) at($padding1, 3) at($padding1, 4); // 패딩1 적용
+  }
+
+  // width1 초과 width2 이하일 때
+  @media (min-width: $width2) {
+      padding: at($padding2, 1) at($padding2, 2) at($padding2, 3) at($padding2, 4); // 패딩2 적용
+  }
+
+  // width2 초과일 때
+  @media (min-width: $width3) {
+      padding: at($padding3, 1) at($padding3, 2) at($padding3, 3) at($padding3, 4); // 패딩3 적용
+  }
+}
+
+// .container {
+//   @include conditional-padding(
+//       320px, 10px 15px 20px 25px, // width1 이하일 때 패딩
+//       768px, 20px 25px 30px 35px, // width1 초과 width2 이하일 때 패딩
+//       1280px, 30px 35px 40px 45px // width2 초과일 때 패딩
+//   );
+// }
