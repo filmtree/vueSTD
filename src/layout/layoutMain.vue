@@ -30,6 +30,7 @@ import MainFooter from './mainFooter.vue'
 .header {
   padding: 20px;
 }
+
 .wrap {
   margin: 20px auto;
   padding: 20px;

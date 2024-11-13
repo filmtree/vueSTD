@@ -5,8 +5,8 @@ import Cselect from "../views/SelectMake.vue";
 import Dycomp from "../views/DynamicComp.vue";
 import ElTree from "../views/elementTree.vue";
 import NotFound from "../views/NotFound.vue";
-import Dragable from "../views/DragAble.vue"
-import ButtonProps from "../views/ButtonsProps.vue"
+import Dragable from "../views/DragAble.vue";
+import ButtonProps from "../views/ButtonsProps.vue";
 import TooltipMessage from "../views/TooltipMessage.vue";
 import EllipsisText from "@/ui/EllipsisTextUse.vue";
 import DynamicComponentTab from "@/views/DynamicComponentTab.vue";
@@ -98,6 +98,11 @@ const router = createRouter({
   /* 사용자 클래스 지정 */
   linkActiveClass: "active", // 기본 클래스변경, 기본 클래스 router-link-active
   linkExactActiveClass: 'exact-active', // 기본 exact 클래스 변경, 기본 exact 클래스 : router-link-exact-active
+  // 기본 Top으로 스크롤 보내기
+  // scrollBehavior(to, from, savedPosition) {
+  //   // 항상 스크롤을 최상단으로 이동
+  //   return { top: 0, left: 0 };
+  // }
   /* transition Scroll */
   // https://router.vuejs.kr/guide/advanced/scroll-behavior.html
   scrollBehavior(to, from, savedPosition) {
@@ -105,9 +110,11 @@ const router = createRouter({
       // 스크롤 지연
       setTimeout(() => {
         resolve({top: 0, left:0, behavior: 'smooth' })
-      }, 300)
+      }, 0)
     })
   },
+  //특정 요소로 스크롤
+  // return { el: '#main', top: 10 }; // 10px 오프셋으로 '#main' 요소로 스크롤
 });
 
 export default router;
